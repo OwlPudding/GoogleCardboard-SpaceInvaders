@@ -1,4 +1,4 @@
-var scene, camera, renderer, container, element;
+var scene, camera, renderer, container, element, effect;
 var controls;
 var clock = new THREE.Clock();
 var ambientLight;
@@ -252,6 +252,8 @@ function animate() {
         renderer.render(loadingScreen.scene, loadingScreen.camera);
         return;
     }
+
+    requestAnimationFrame(animate);
     //INVADER ROW 1 - MOVEMENT
     meshes["inv0101"].position.x -= 0.15;
     if( meshes["inv0101"].position.x < -31.9 ) meshes["inv0101"].position.x = 25.39;
@@ -365,7 +367,7 @@ function animate() {
             );
             bullet.velocity = new THREE.Vector3(
                 -Math.sin(camera.rotation.y), 0,
-                -Math.cos(camera.rotation.y)
+                Math.cos(camera.rotation.y)
             );
             bullet.alive = true;
             setTimeout(function() {
@@ -378,10 +380,10 @@ function animate() {
         }
     }
     if(player.canShoot > 0) {player.canShoot -= 1;}
-    requestAnimationFrame(animate);
     update(delta);
     render(delta);
 }
+//KEYCODE HANDLERS
 function keyDown(e){
     keyboard[e.keyCode] = true;
 }
@@ -391,7 +393,6 @@ function keyUp(e){
 function update(dt){
     resize();
     camera.updateProjectionMatrix();
-    controls.update(dt);
 }
 function render(dt){
     effect.render(scene, camera);
