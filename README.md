@@ -1,6 +1,6 @@
 # Google Cardboard - Space Invaders v1.0
 ## (Made with Three.js)
-What would it be like if you controlled the ship in space invaders?  
+What would it be like if you controlled the ship in space invaders in first person?  
 > MADE BY: ALEX ANTHONY CORTES-OSE
 > This game was built in only a couple of hours (early hours, might I add)
 ---
